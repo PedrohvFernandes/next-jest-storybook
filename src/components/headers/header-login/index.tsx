@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Header } from "./header-default";
+import { Header } from "../header-default";
 import { useUser } from "@/hooks/get-user";
 
 export const HeaderLogin: React.FC = () => {

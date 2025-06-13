@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { fn } from 'storybook/test';
 
-import { Header } from '../components/headers/header-default';
+import { Header } from './header-default';
 
 const meta = {
   title: 'Example/Header',

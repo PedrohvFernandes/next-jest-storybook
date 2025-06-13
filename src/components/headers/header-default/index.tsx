@@ -1,5 +1,5 @@
 import { User } from '@/types/user';
-import { Button } from '../button';
+import { Button } from '../../button';
 
 
 export interface HeaderProps {

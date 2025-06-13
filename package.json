@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "git-commit-msg-linter": "^5.0.8",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
