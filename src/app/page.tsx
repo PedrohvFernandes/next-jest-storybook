@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { HeaderLogin } from '../components/headers/header-login';
+import { Header } from '../components/header';
 
 const Page: React.FC = () => {
   return (
     <article>
-      <HeaderLogin />
+      <Header />
 
       <section className="mx-auto max-w-[600px] p-12 text-neutral-text  text-[14px] leading-[24px] font-sans">
         <h2 className="inline-block align-top mb-1 font-bold text-[32px] leading-none">
