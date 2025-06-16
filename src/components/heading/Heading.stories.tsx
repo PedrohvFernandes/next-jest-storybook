@@ -7,18 +7,17 @@ export default {
   component: Heading,
   args: {
     children: 'Heading(h2) Medium Default.',
-    size: 'md'
+    size: 'md',
   },
   argTypes: {
-  
     size: {
       name: 'Tamanho: ',
       options: ['sm', 'md', 'lg'],
-      control:{
-        type: 'inline-radio'
-      }
-    }
-  }
+      control: {
+        type: 'inline-radio',
+      },
+    },
+  },
 } as Meta<HeadingProps>
 
 export const Default: StoryObj<HeadingProps> = {}
@@ -26,32 +25,32 @@ export const Default: StoryObj<HeadingProps> = {}
 export const Small: StoryObj<HeadingProps> = {
   args: {
     children: 'Heading(h2) Small',
-    size: 'sm'
-  }
+    size: 'sm',
+  },
 }
 
 export const Large: StoryObj<HeadingProps> = {
   args: {
     children: 'Heading(h2) Large',
-    size: 'lg'
-  }
+    size: 'lg',
+  },
 }
 
 export const CustomComponent: StoryObj<HeadingProps> = {
   args: {
     asChild: true,
-    children: (<h1>Heading with H1 tag</h1>)
+    children: <h1>Heading with H1 tag</h1>,
   },
-  argTypes:{
+  argTypes: {
     children: {
-      table:{
-        disable: true
-      }
+      table: {
+        disable: true,
+      },
     },
     asChild: {
-      table:{
-        disable: true
-      }
-    }
-  }
+      table: {
+        disable: true,
+      },
+    },
+  },
 }

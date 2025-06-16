@@ -32,7 +32,7 @@ describe('Heading Component', () => {
     render(
       <Heading asChild>
         <h1>H1 Heading</h1>
-      </Heading>
+      </Heading>,
     )
     const headingElement = screen.getByText('H1 Heading')
     expect(headingElement.tagName).toBe('H1') // deve ser <h1>, não <h2>

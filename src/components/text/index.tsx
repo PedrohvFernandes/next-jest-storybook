@@ -11,7 +11,13 @@ export interface TextProps {
   className?: string
 }
 
-export function Text({ size = 'md', children, asChild, className, color }: TextProps) {
+export function Text({
+  size = 'md',
+  children,
+  asChild,
+  className,
+  color,
+}: TextProps) {
   // Se asChield for true, ela usa o Slot como component e com isso o Slot pega o filho dele e o transforma como o componente principal o substituindo
   const Comp = asChild ? Slot : 'span'
   return (
@@ -21,9 +27,9 @@ export function Text({ size = 'md', children, asChild, className, color }: TextP
         {
           'text-xs': size === 'sm',
           'text-sm': size === 'md',
-          'text-md': size === 'lg'
+          'text-md': size === 'lg',
         },
-        className
+        className,
       )}
       style={{ color }}
     >

@@ -32,7 +32,7 @@ describe('Text Component', () => {
     render(
       <Text asChild>
         <p>Paragraph Text</p>
-      </Text>
+      </Text>,
     )
     const textElement = screen.getByText('Paragraph Text')
     expect(textElement.tagName).toBe('P') // deve ser um <p>, não um <span>

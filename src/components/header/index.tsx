@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
-import { Button } from '../../components/button';
-import { useUser } from '@/hooks/get-user';
-import { useRouter, usePathname } from 'next/navigation'; // Use apenas App Router
-import { ConfigRoutes } from '@/config';
-import { Heading } from '../heading';
-import { Text } from '../text';
-import { useLoginUser } from '@/hooks/use-login-user';
+import { Button } from '../../components/button'
+import { useUser } from '@/hooks/get-user'
+import { useRouter, usePathname } from 'next/navigation' // Use apenas App Router
+import { ConfigRoutes } from '@/config'
+import { Heading } from '../heading'
+import { Text } from '../text'
+import { useLoginUser } from '@/hooks/use-login-user'
 
 export interface HeaderProps {
   children?: ReactNode
@@ -17,12 +17,12 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = () => {
   const { user } = useUser()
   const { logout } = useLoginUser()
-  
+
   const router = useRouter()
   const pathname = usePathname()
 
   return (
-    <header className='fixed w-full'>
+    <header className="fixed w-full">
       <div className="flex justify-between items-center border-b border-white/10 py-4 px-5 bg-gray-900">
         <div className="flex items-center gap-2">
           <svg
@@ -57,7 +57,9 @@ export const Header: React.FC<HeaderProps> = () => {
               <Text className="mr-2">
                 Welcome, <b>{user.name}</b>!
               </Text>
-              <Button size="small" onClick={logout}>Log out</Button>
+              <Button size="small" onClick={logout}>
+                Log out
+              </Button>
             </>
           ) : (
             <>

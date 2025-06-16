@@ -29,24 +29,18 @@ function TextInputIcon(props: TextInputIconProps) {
 // Para forçar o nome do componente
 TextInputIcon.displayName = 'TextInput.Icon'
 
-
-
 export interface TextInputErrorProps {
   children: ReactNode
 }
 
 function TextInputError({ children }: TextInputErrorProps) {
-  return (
-    <span
-      className="font-bold text-red-400"
-    >{children}</span>
-  )
+  return <span className="font-bold text-red-400">{children}</span>
 }
 
 TextInputError.displayName = 'TextInput.Error'
 
 export interface TextInputInputProps
-  extends InputHTMLAttributes<HTMLInputElement> { }
+  extends InputHTMLAttributes<HTMLInputElement> {}
 
 function TextInputInput({ ...res }: TextInputInputProps) {
   return (
@@ -63,5 +57,5 @@ export const TextInput = {
   Root: TextInputRoot,
   Input: TextInputInput,
   Icon: TextInputIcon,
-  Error: TextInputError
+  Error: TextInputError,
 }

@@ -14,15 +14,13 @@ export const useLoginUser = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<LoginUserPdmPropsZod>({
     mode: 'all',
     resolver: zodResolver(loginUserPdmSchema),
   })
 
-
   const login = async (data: LoginUserPdmPropsZod) => {
-
     // Aqui faria uma req
 
     // Claramente que apos a req veriamos se deu algum erro na response, e apos tudo vir corretamente, viria um token e a gente passaria para o setToken esse token e la no contexto a gente o pegaria e o  decodificaria...
@@ -30,13 +28,12 @@ export const useLoginUser = () => {
 
     // Aqui a gente tambem decodificaria o token e passaria as informações
     setUser({
-      name: data.name
+      name: data.name,
     })
 
     reset()
     router.push(ConfigRoutes.testC6bank.default.path)
   }
-
 
   function logout() {
     setUser(null)
@@ -44,12 +41,11 @@ export const useLoginUser = () => {
     router.push(ConfigRoutes.testC6bank.signin.path)
   }
 
-
   return {
     login,
     logout,
     register,
     handleSubmit,
-    errors
+    errors,
   }
 }

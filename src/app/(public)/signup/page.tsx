@@ -1,7 +1,5 @@
-import { Heading } from "@/components/heading";
+import { Heading } from '@/components/heading'
 
 export default function Signup() {
-  return (
-    <Heading>So testando</Heading>
-  )
+  return <Heading>So testando</Heading>
 }

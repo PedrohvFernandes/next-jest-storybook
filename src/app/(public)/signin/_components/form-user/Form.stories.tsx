@@ -1,7 +1,6 @@
-import { FormUser } from '.';
+import { FormUser } from '.'
 
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { expect, within } from 'storybook/test';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
 const meta = {
   title: 'Components/Signin/FormUser',
@@ -9,13 +8,11 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof FormUser>;
+} satisfies Meta<typeof FormUser>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
-    <FormUser className='w-sm' />
-  ),
-};
+  render: () => <FormUser className="w-sm" />,
+}

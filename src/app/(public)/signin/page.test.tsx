@@ -4,11 +4,11 @@ import { useLoginUser } from '@/hooks/use-login-user'
 
 // Mock dos hooks e dependências
 jest.mock('next/navigation', () => ({
-  useRouter: jest.fn()
+  useRouter: jest.fn(),
 }))
 
 jest.mock('../../../hooks/use-login-user', () => ({
-  useLoginUser: jest.fn()
+  useLoginUser: jest.fn(),
 }))
 
 describe('Signin Page', () => {
@@ -21,15 +21,14 @@ describe('Signin Page', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
-
-      ; (useLoginUser as jest.Mock).mockReturnValue({
-        handleSubmit: mockHandleSubmit,
-        login: mockLogin,
-        register: mockRegister,
-        errors: {
-          name: { message: 'Nome é obrigatório' }
-        }
-      })
+    ;(useLoginUser as jest.Mock).mockReturnValue({
+      handleSubmit: mockHandleSubmit,
+      login: mockLogin,
+      register: mockRegister,
+      errors: {
+        name: { message: 'Nome é obrigatório' },
+      },
+    })
   })
 
   it('should render heading, text and form elements', () => {
@@ -40,7 +39,9 @@ describe('Signin Page', () => {
     expect(screen.getByText(/faça login e comece a usar!/i)).toBeInTheDocument()
     expect(screen.getByText(/seu nome/i)).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/digite seu nome/i)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /entrar na plataforma/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: /entrar na plataforma/i }),
+    ).toBeInTheDocument()
   })
 
   it('should show error message when name is invalid', () => {
@@ -51,11 +52,11 @@ describe('Signin Page', () => {
 
   it('should call login function on submit', () => {
     // Simular erro vazio para permitir o envio
-    (useLoginUser as jest.Mock).mockReturnValue({
+    ;(useLoginUser as jest.Mock).mockReturnValue({
       handleSubmit: mockHandleSubmit,
       login: mockLogin,
       register: mockRegister,
-      errors: {}
+      errors: {},
     })
 
     render(<Signin />)

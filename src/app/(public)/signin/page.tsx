@@ -4,7 +4,6 @@ import { Bar } from '@/styles/bar'
 import { FormUser } from './_components/form-user'
 
 export default function Signin() {
-
   return (
     <div className="flex-1 flex flex-col items-center justify-center">
       <header className="flex flex-col items-center">

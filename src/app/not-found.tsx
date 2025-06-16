@@ -1,13 +1,12 @@
 'use client'
 
-import { Button } from "@/components/button";
-import { useRouter } from "next/navigation";
-import { useUser } from "@/hooks/get-user";
+import { Button } from '@/components/button'
+import { useRouter } from 'next/navigation'
 import { ConfigRoutes } from '@/config'
-import { getToken } from "@/utils/auth";
+import { getToken } from '@/utils/auth'
 
 export default function NotFound() {
-  const router = useRouter();
+  const router = useRouter()
   const token = !!getToken()
 
   return (
@@ -19,10 +18,18 @@ export default function NotFound() {
 
       <div className="flex gap-4">
         <Button onClick={() => router.back()}>Voltar para a última tela</Button>
-        <Button onClick={() => router.push(token ? ConfigRoutes.testC6bank.default.path : ConfigRoutes.testC6bank.signin.path)}>
-         Home
+        <Button
+          onClick={() =>
+            router.push(
+              token
+                ? ConfigRoutes.testC6bank.default.path
+                : ConfigRoutes.testC6bank.signin.path,
+            )
+          }
+        >
+          Home
         </Button>
       </div>
     </div>
-  );
+  )
 }

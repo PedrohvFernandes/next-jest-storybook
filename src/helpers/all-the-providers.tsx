@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
-import { render } from '@testing-library/react';
-import { Header } from '../components/header';
+/* eslint-disable import/export */
+import { ReactNode } from 'react'
+import { render } from '@testing-library/react'
+import { Header } from '../components/header'
 
 const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
@@ -8,11 +9,11 @@ const AllTheProviders = ({ children }: { children: ReactNode }) => {
       <Header />
       {children}
     </>
-  );
-};
+  )
+}
 
 const customRender = (ui: React.ReactElement, options = {}) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
+  render(ui, { wrapper: AllTheProviders, ...options })
 
-export * from '@testing-library/react';
-export { customRender as render };
+export * from '@testing-library/react'
+export { customRender as render }
