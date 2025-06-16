@@ -25,7 +25,7 @@ export const useLoginUser = () => {
 
     // Aqui faria uma req
 
-    // Claramente que apos a req viriamos se deu algum erro na response, e apos tudo vir corretamente, viria um token e a gente passaria para o setToken e la no contexto a gente o pegaria e o  decodificaria...
+    // Claramente que apos a req veriamos se deu algum erro na response, e apos tudo vir corretamente, viria um token e a gente passaria para o setToken esse token e la no contexto a gente o pegaria e o  decodificaria...
     setToken(data.name, 1 / 6) // expires em 4 hours = 1/6 days
 
     // Aqui a gente tambem decodificaria o token e passaria as informações
