@@ -59,6 +59,12 @@
   --color-success-contrast-light: #357a14;
   --color-success-contrast-dark: #171717;
 
+  --color-tertiary-default: #91BAF8;
+  --color-tertiary-light: #BED8FC;
+  --color-tertiary-dark: #5E87C5;
+  --color-tertiary-contrast-light: #ffffff;
+  --color-tertiary-contrast-dark: #171717;
+
   --color-neutral-foreground: #171717;
   --color-neutral-background: #ffffff;
   --color-neutral-text: #333333;

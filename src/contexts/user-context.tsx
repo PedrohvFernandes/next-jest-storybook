@@ -1,13 +1,12 @@
 "use client"
 
-import { User } from "@/types/user";
+import { LoginUserPdmPropsZod } from "@/types/user";
+import { getToken } from "@/utils/auth";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-
 interface IUserContextType {
-  user: User | null; // Pode ser null se não estiver logado
-  login: () => void;
-  logout: () => void;
+  user: LoginUserPdmPropsZod | null;  // Permite também ser null no início
+  setUser: React.Dispatch<React.SetStateAction<LoginUserPdmPropsZod | null>>; // Tipo do setUser do useState
 }
 
 export const UserContext = createContext({} as IUserContextType);
@@ -16,52 +15,27 @@ interface IUserContextProvider {
   children: ReactNode;
 }
 
-const USER_STORAGE_KEY = 'user:login';
-
+// Contexto responsável só para repassar as infos do usuário e setar momento inicial
 export function UserContextProvider({ children }: IUserContextProvider) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<LoginUserPdmPropsZod | null>(null);
+  const isAuthenticated = !!getToken()
 
   useEffect(() => {
-    const storedUser = window.localStorage.getItem(USER_STORAGE_KEY);
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+    // No primeiro login não temos o token, somente quando logamos e recarregamos a pagina
+    if (!isAuthenticated) return;
 
-
-  function login() {
-    // Aqui teria uma requisição para o backend
-    // Exemplo:
-    // const response = await api.post('/login', { username, password });
-    // setUser(response.data.user);
-
-    // Como não há backend ainda, fiz uma simulação
-    const fakeUser = { name: 'Jane Doe' };
-    setUser(fakeUser);
-  }
-
-  function logout() {
-    // Aqui poderia avisar o backend para invalidar o token ou sessão
-    // Exemplo:
-    // await api.post('/logout');
-
-    setUser(null);
-  }
-
-  useEffect(() => {
-    if (user) {
-      window.localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-    } else {
-      window.localStorage.removeItem(USER_STORAGE_KEY);
-    }
-  }, [user]);
+    // Simulando a "decodificação" do token
+    // Aqui teria que decodificar o token, mas como não é realmente um token e sim o nome, então passamos direto o que vem do token para a propriedade name
+    setUser({
+      name: getToken() ?? ''
+    })
+  }, [])
 
   return (
     <UserContext.Provider
       value={{
         user,
-        login,
-        logout,
+        setUser,
       }}
     >
       {children}

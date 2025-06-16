@@ -4,19 +4,27 @@ import { ReactNode } from 'react';
 
 import { Button } from '../../components/button';
 import { useUser } from '@/hooks/get-user';
-
+import { useRouter, usePathname } from 'next/navigation'; // Use apenas App Router
+import { ConfigRoutes } from '@/config';
+import { Heading } from '../heading';
+import { Text } from '../text';
+import { useLoginUser } from '@/hooks/use-login-user';
 
 export interface HeaderProps {
-  children: ReactNode
+  children?: ReactNode
 }
 
-export const Header: React.FC = () => {
-  const { user, login, logout } = useUser()
+export const Header: React.FC<HeaderProps> = () => {
+  const { user } = useUser()
+  const { logout } = useLoginUser()
+  
+  const router = useRouter()
+  const pathname = usePathname()
 
   return (
-    <header>
-      <div className="flex justify-between items-center border-b border-black/10 py-4 px-5 font-sans">
-        <div className="flex items-center">
+    <header className='fixed w-full'>
+      <div className="flex justify-between items-center border-b border-white/10 py-4 px-5 bg-gray-900">
+        <div className="flex items-center gap-2">
           <svg
             width="32"
             height="32"
@@ -39,20 +47,36 @@ export const Header: React.FC = () => {
               />
             </g>
           </svg>
-          <h1 className="inline-block align-top ml-2 my-[6px] font-bold text-[20px] leading-none">Acme</h1>
+          <Heading asChild>
+            <h1>C6 Bank</h1>
+          </Heading>
         </div>
         <div className="flex items-center">
           {user ? (
             <>
-              <span className="mr-2 text-neutral-text text-sm">
+              <Text className="mr-2">
                 Welcome, <b>{user.name}</b>!
-              </span>
-              <Button size="small" onClick={logout} label="Log out" />
+              </Text>
+              <Button size="small" onClick={logout}>Log out</Button>
             </>
           ) : (
             <>
-              <Button size="small" onClick={login} label="Log in" />
-              <Button primary size="small" onClick={login} label="Sign up" className="ml-2" />
+              <Button
+                size="small"
+                onClick={() => router.push(ConfigRoutes.testC6bank.signin.path)}
+                active={pathname === ConfigRoutes.testC6bank.signin.path}
+              >
+                Log in
+              </Button>
+              <Button
+                primary
+                size="small"
+                onClick={() => router.push(ConfigRoutes.testC6bank.signup.path)}
+                className="ml-2"
+                active={pathname === ConfigRoutes.testC6bank.signup.path}
+              >
+                Sign up
+              </Button>
             </>
           )}
         </div>

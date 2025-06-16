@@ -1,8 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import { Header } from './index';
+import { Header } from './';
 import { useUser } from '@/hooks/get-user';
 
 jest.mock('../../hooks/get-user'); // Mock do hook
+
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    refresh: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => '/',
+}));
 
 describe('Header Component', () => {
   const mockLogin = jest.fn();
