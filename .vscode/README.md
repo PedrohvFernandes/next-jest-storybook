@@ -1,72 +1,154 @@
-# Como rodar os testes com coverage
+# ✅ Como Rodar os Testes com Coverage no VSCode
 
-### Passos:
+## 1. Instale a extensão Jest no VSCode
 
-- Primeiro instale a extensão: [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest)
-- Segundo na pasta *.vscode*>*settings.json* cole a config da extensão(na mesma config contem uma config para o eslint):
+🔗 [Clique aqui para instalar a extensão Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest)
+
+---
+
+## 2. Configure o arquivo `.vscode/settings.json`
+
+No seu projeto, vá até a pasta `.vscode` e edite (ou crie) o arquivo `settings.json`, colando o conteúdo abaixo:
 
 ```json
-
 {
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
-    "source.fixAll.eslint": "always",
+    "source.fixAll.eslint": "always"
   },
   "eslint.format.enable": true,
-  // Always reveal the executed test when testing.followRunningTest is on. If this setting is turned off, only failed tests will be revealed.
   "testing.alwaysRevealTestOnStateChange": false,
-  // Configures when the error Peek view is automatically opened.
-  //  - failureAnywhere: Open automatically no matter where the failure is.
-  //  - failureInVisibleDocument: Open automatically when a test fails in a visible document.
-  //  - never: Never automatically open.
   "testing.automaticallyOpenPeekView": "never",
-  // Controls whether to automatically open the Peek view during continuous run mode.
   "testing.automaticallyOpenPeekViewDuringAutoRun": false,
-  // Controls when the testing view should open.
-  //  - neverOpen: Never automatically open the testing views
-  //  - openOnTestStart: Open the test results view when tests start
-  //  - openOnTestFailure: Open the test result view on any test failure
-  //  - openExplorerOnTestStart: Open the test explorer when tests start
   "testing.automaticallyOpenTestResults": "openOnTestStart",
-  // Controls the count badge on the Testing icon on the Activity Bar.
-  //  - failed: Show the number of failed tests
-  //  - off: Disable the testing count badge
-  //  - passed: Show the number of passed tests
-  //  - skipped: Show the number of skipped tests
   "testing.countBadge": "failed",
-  // Configures the colors used for percentages in test coverage bars.
   "testing.coverageBarThresholds": {
     "red": 0,
     "yellow": 60,
     "green": 90
   },
-  // Controls whether the coverage toolbar is shown in the editor.
   "testing.coverageToolbarEnabled": false,
-  // Controls the action to take when left-clicking on a test decoration in the gutter.
-  //  - run: Run the test.
-  //  - debug: Debug the test.
-  //  - runWithCoverage: Run the test with coverage.
-  //  - contextMenu: Open the context menu for more options.
   "testing.defaultGutterClickAction": "run",
-  // Configures what percentage is displayed by default for test coverage.
-  //  - totalCoverage: A calculation of the combined statement, function, and branch coverage.
-  //  - statement: The statement coverage.
-  //  - minimum: The minimum of statement, function, and branch coverage.
   "testing.displayedCoveragePercent": "totalCoverage",
-  // Controls whether the running test should be followed in the Test Explorer view.
   "testing.followRunningTest": false,
-  // Controls whether test decorations are shown in the editor gutter.
   "testing.gutterEnabled": true,
-  // Control whether save all dirty editors before running a test.
   "testing.saveBeforeTest": true,
-  // Controls whether to show messages from all test runs.
   "testing.showAllMessages": false,
-  // Whether test coverage should be down in the File Explorer view.
+  "testing.showCoverageInExplorer": true
+}
+```
+
+🔍 Obs.: Esta configuração também inclui ajustes para o ESLint e boas práticas de formatação automática.
+
+---
+
+## 3. Como rodar os testes com coverage
+
+Após configurar o VSCode e a extensão:
+
+### ➡️ Vá até o **Test Explorer** do VSCode (ícone de teste no menu lateral):
+
+#### Confira o passo a passo abaixo ilustrado com imagens:
+
+1. <img width=100% src="./images/Captura de Tela 2025-06-18 às 12.59.02.png">
+
+
+2. <img width=100% src="./images/Captura de Tela 2025-06-18 às 12.59.21.png">
+
+
+3. <img width=100% src="./images/Captura de Tela 2025-06-18 às 12.59.31.png">
+
+
+4. <img width=100% src="./images/Captura de Tela 2025-06-18 às 12.59.36.png">
+
+
+5. <img width=100% src="./images/Captura de Tela 2025-06-18 às 12.59.44.png">
+
+
+6. <img width=100% src="./images/Captura de Tela 2025-06-18 às 13.00.09.png">
+
+
+7. <img width=100% src="./images/Captura de Tela 2025-06-18 às 13.00.14.png">
+
+
+8. <img width=100% src="./images/Captura de Tela 2025-06-18 às 13.00.17.png">
+
+
+9. **Resultado geral de coverage no explorer**
+<img width=100% src="./images/Captura de Tela 2025-06-18 às 13.00.26.png">
+
+10. **Se estiver dando erro ao rodar com coverage**
+<img width=100% src="./images/Captura de Tela 2025-06-18 às 13.48.36.png">
+
+
+---
+
+## 🎯 Pronto! Agora você consegue rodar os testes com coverage e visualizar de forma clara as métricas no próprio VSCode.
+
+## Config diferente:
+
+```Json
+{
+  // Formatação e padrões do editor
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+
+  // ESLint + Prettier
+  "eslint.format.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // Jest Test Explorer
+  // "jest.jestCommandLine": "next test", // Usa o comando do Next.js (Next 13/15 com App Router já suporta Jest)
+  "jest.autoRun": {
+    "watch": true,
+    "onSave": "test-src-file" // roda teste relacionado ao arquivo salvo
+  },
+  "jest.showCoverageOnLoad": true,
+  "jest.coverageFormatter": "json", // Para cobertura detalhada
+
+  // Visualização de Testes no VSCode
+  "testing.automaticallyOpenTestResults": "openOnTestStart",
+  "testing.countBadge": "failed",
+  "testing.defaultGutterClickAction": "runWithCoverage",
+  "testing.coverageBarThresholds": {
+    "red": 50,
+    "yellow": 80,
+    "green": 90
+  },
+  "testing.displayedCoveragePercent": "totalCoverage",
+  "testing.followRunningTest": false,
   "testing.showCoverageInExplorer": true,
+  "testing.saveBeforeTest": true,
+
+  // Storybook (evita conflitos de linting em arquivos de stories)
+  "files.exclude": {
+    "**/*.stories.tsx": false
+  },
+
+  // esconder arquivos de build do Next.js
+  "files.watcherExclude": {
+    "**/.next/**": true
+  },
+
+  // melhorar performance ao abrir pastas grandes
+  "search.exclude": {
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/out": true
+  }
 }
 
 ```
 
-- Apos isso vai em:
+## Caso queira rodar os testes na mão:
+
+- Teste: npm run test
+- Teste + Coverage + Open index.html: npm run test:coverage
+  - Esse aqui roda o coverage e abre o html localizado em *coverage/lcov-report/index.html* que é gerado pelo coverage tanto a mão, quanto pela extensão.
