@@ -19,6 +19,7 @@ const config: Config = {
     '!**/.next/**', // Exclui a pasta .next
     '!**/out/**', // Exclui pasta de build caso exista
     '!**/*.d.ts', // Exclui arquivos de definição de tipo
+    '!**/*.stories.{js,jsx,ts,tsx}', // Exclui arquivos de definição de tipo
   ],
   coverageDirectory: 'coverage', // pasta onde o report de coverage será gerado
 }
