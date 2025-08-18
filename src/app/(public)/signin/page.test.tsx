@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent } from '@testing-library/react'
 import Signin from './page'
 import { useLoginUser } from '@/hooks/use-login-user'

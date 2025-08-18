@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { Header } from '.'
-import { UserContext, UserContextProvider } from '@/contexts/user-context'
+import { UserContextProvider } from '@/contexts/user-context'
 
 const meta: Meta<typeof Header> = {
   title: 'Components/Header',

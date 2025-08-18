@@ -12,7 +12,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage && open coverage/lcov-report/index.html",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "start-storybook": "npx serve storybook-static"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
